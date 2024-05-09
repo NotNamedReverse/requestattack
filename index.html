@@ -8,7 +8,7 @@
 <body>
     <h1 id="Title">Request attack form.</h1>
     <br>
-    <h2>WHEN THE PAGE REDIRECTS THAT MEANS IT IS SENT! DO NOT SEND MORE THAN ONE</h2>
+    <h2>WHEN THE PAGE REDIRECTS THAT MEANS IT IS SENT! DO NOT SEND MORE THAN ONE (it might take a second to redirect)</h2>
 
     <br>
 
@@ -72,7 +72,7 @@
 
         sendMail(personName, encodedMessage)
 
-        window.location.href = "notnamedreverse.github.io/statemap-localhost"
+        setTimeout(window.location.replace("notnamedreverse.github.io/statemap-localhost"),3000)
     }
     
 </script>
