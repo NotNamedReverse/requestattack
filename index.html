@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Request attack</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js></script>
 </head>
 <body>
     <h1 id="Title">Request attack form.</h2>
@@ -31,6 +32,7 @@
 
 <script>
     const sendRequest = document.getElementById("submitAttack");
+    emailjs.init(5aeP8CIyw-oOznJYL);
 
     function lettersToNumbers(str) {
         const result = [];
@@ -49,31 +51,10 @@
         return result.join(" ");
     }
 
-    function sendMail(name, email, subject, message) {
-          const myHeaders = new Headers();
-          myHeaders.append("Content-Type", "application/json");
-          myHeaders.set('Authorization', 'Basic ' + btoa('41d34724dd14a426c1a313c8c4f157e4'+":" +'a5b15efb340e9c8e166cd8221e5d57c8'));
-
-          const data = JSON.stringify({
-            "Messages": [{
-              "From": {"Email": "gradyblockmaster@gmail.com", "Name": "garden"},
-              "To": [{"Email": email, "Name": name}],
-              "Subject": subject,
-              "TextPart": message
-            }]
-          });
-
-          const requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: data,
-          };
-
-          fetch("https://api.mailjet.com/v3.1/send", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
-        }
+    function sendMail(name, message) {
+        var templateParams = {attackingName: name, message: message}
+        emailjs.send("service_nzxxcwg", "template_aupmc8f", templateParams);
+    }
 
     sendRequest.onclick = function attackSubmit()
     {
@@ -85,7 +66,7 @@
 
         
 
-        sendMail(personName,"statewarrequests@outlook.com",'attack-' + personName, encodedMessage)
+        sendMail(personName, encodedMessage)
 
         console.log("SENT");
     }
