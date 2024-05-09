@@ -6,7 +6,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="Title">Request attack form.</h2>
+    <h1 id="Title">Request attack form.</h1>
+    <br>
+    <h2>WHEN THE PAGE REDIRECTS THAT MEANS IT IS SENT! DO NOT SEND MORE THAN ONE</h2>
+
     <br>
 
     <div class="input-container">
@@ -29,7 +32,7 @@
     <img src="States.png" width="1000" alt="Current Ownership Map">
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     
 <script>
     const sendRequest = document.getElementById("submitAttack");
@@ -63,13 +66,13 @@
         var attackingFrom = document.getElementById("attackFrom").value;
         var attackingTo = document.getElementById("attackTo").value;
 
-        var encodedMessage = lettersToNumbers("attacking-from::" + attackingFrom + " ::and-wanting-to-attack: " + attackingTo)
+        var encodedMessage = personName + " is attacking from::" + attackingFrom + " ::and wanting to attack: " + attackingTo
 
         
 
         sendMail(personName, encodedMessage)
 
-        console.log("SENT");
+        window.location.href = "notnamedreverse.github.io/statemap-localhost"
     }
     
 </script>
